@@ -2,6 +2,8 @@ import React from 'react'
 import Link from 'next/link'
 
 const fetchPostComments = async (id: number): Promise<Comment[]> => {
+  await new Promise(resolve => setTimeout(resolve, 3000))
+  // throw new Error('Error al cargar comentarios')
   return await fetch(`https://jsonplaceholder.typicode.com/posts/${id}/comments`, { cache: 'no-store' })
     .then(async response => await response.json())
     .then(json => json)
